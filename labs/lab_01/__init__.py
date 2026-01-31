@@ -54,17 +54,17 @@ else:
 
 #18
 if n > 0:
-	print (“positive”) 
+	print ("positive") 
 elif n < 0: 
-	print (“negative”)
+	print ("negative")
 else: 
-	print(“zero”)
+	print("zero")
 
 #19
 if s: 
-	print (“non-empty”)
+	print ("non-empty")
 else: 
-	print(“empty”)
+	print("empty")
 
 #20
 if x is None: 
@@ -75,9 +75,9 @@ else:
 #21 
 #a
 if s: 
-	print (“non-empty”)
+	print ("non-empty")
 else: 
-	print(“empty”)
+	print("empty")
 #b
 if s == "":
     print("empty")
