@@ -49,3 +49,37 @@ elif x == "":
     print("B")
 else:
     print("C")
+
+###PART 5###
+
+#18
+if n > 0:
+	print (“positive”) 
+elif n < 0: 
+	print (“negative”)
+else: 
+	print(“zero”)
+
+#19
+if s: 
+	print (“non-empty”)
+else: 
+	print(“empty”)
+
+#20
+if x is None: 
+    print ("missing")
+else:
+    print("present")
+
+#21 
+#a
+if s: 
+	print (“non-empty”)
+else: 
+	print(“empty”)
+#b
+if s == "":
+    print("empty")
+else:
+    print("non-empty")
