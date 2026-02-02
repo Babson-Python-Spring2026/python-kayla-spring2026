@@ -51,7 +51,7 @@ else:
     print("C")
 
 ###PART 5###
-
+'''
 #18
 if n > 0:
 	print ("positive") 
@@ -83,3 +83,7 @@ if s == "":
     print("empty")
 else:
     print("non-empty")
+'''
+
+result = 12 - 4 * 2
+print(result)
