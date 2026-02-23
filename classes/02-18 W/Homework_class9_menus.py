@@ -121,10 +121,13 @@ THIS ASSIGNMENT WILL BE DUE 2/25 (NEXT WEDNESDAY) SO YOU CAN ASK QUESTIONS NEXT 
 
 import functions2 as fn2
 
+to_top = False
+
 while True:
+    to_top = False
     fn2.clear_screen()
     fn2.print_header('Top Menu level 1')
-    options=['Clients', 'Portfolios'] #level 1 options
+    options = ['Clients', 'Portfolios']
     fn2.display_menu(options)
     choice = fn2.get_menu_choice(options)
 
@@ -132,11 +135,15 @@ while True:
         print('exit top level menu')
         fn2.pause(1)
         break
-    elif choice == 1:
+
+    elif choice == 1:  # CLIENTS
         while True:
+            if to_top:
+                break
+
             fn2.clear_screen()
             fn2.print_header('Clients level 2')
-            options=['Select Client', 'Create Client'] #level 2 options
+            options = ['Select Client', 'Create Client']
             fn2.display_menu(options)
             choice = fn2.get_menu_choice(options)
 
@@ -144,11 +151,15 @@ while True:
                 print('return to level 1')
                 fn2.pause(1)
                 break
-            elif choice == 1:
+
+            elif choice == 1:  # Select Client
                 while True:
+                    if to_top:
+                        break
+
                     fn2.clear_screen()
                     fn2.print_header('Select Client level 3')
-                    options=['View Client Summary', 'Manage Client Cash'] #level 3 options
+                    options = ['View Client Summary', 'Manage Client Cash']
                     fn2.display_menu(options)
                     choice = fn2.get_menu_choice(options)
 
@@ -156,33 +167,33 @@ while True:
                         print('return to level 2')
                         fn2.pause(1)
                         break
-                    elif choice == 1:
-                        # no while statement leaf
+
+                    elif choice == 1:  # View Client Summary (LEAF)
                         fn2.clear_screen()
                         fn2.print_header('View Client Summary level 4')
-                        # no options leaf
                         print('you have reached View Client Summary')
-                        print('returning to level 3') 
+                        print('returning to TOP')
                         fn2.pause(1)
-                        
-                        continue # not needed but shows intent
-                           
-                    elif choice == 2:
-                        # no while statement leaf
+                        to_top = True
+                        break
+
+                    elif choice == 2:  # Manage Client Cash (LEAF)
                         fn2.clear_screen()
                         fn2.print_header('Manage Client Cash level 4')
-                        # no options leaf
                         print('you have reached Manage Client Cash')
-                        print('returning to level 3') 
+                        print('returning to TOP')
                         fn2.pause(1)
+                        to_top = True
+                        break
 
-                        continue # not needed but shows intent
-
-            elif choice == 2:
+            elif choice == 2:  # Create Client
                 while True:
+                    if to_top:
+                        break
+
                     fn2.clear_screen()
                     fn2.print_header('Create Client level 3')
-                    options=['New Individual', 'New Joint'] #level 3 options
+                    options = ['New Individual', 'New Joint']
                     fn2.display_menu(options)
                     choice = fn2.get_menu_choice(options)
 
@@ -190,42 +201,109 @@ while True:
                         print('return to level 2')
                         fn2.pause(1)
                         break
-                    elif choice == 1:
-                        # no while statement leaf
+
+                    elif choice == 1:  # New Individual (LEAF)
                         fn2.clear_screen()
                         fn2.print_header('New Individual level 4')
-                        # no options leaf
                         print('you have reached New Individual')
-                        print('returning to level 3') 
+                        print('returning to TOP')
                         fn2.pause(1)
+                        to_top = True
+                        break
 
-                        continue # not needed but shows intent
-                           
-                    elif choice == 2:
-                        # no while statement leaf
+                    elif choice == 2:  # New Joint (LEAF)
                         fn2.clear_screen()
                         fn2.print_header('New Joint level 4')
-                        # no options leaf
                         print('you have reached New Joint')
-                        print('returning to level 3') 
-                        fn2.pause(1) 
+                        print('returning to TOP')
+                        fn2.pause(1)
+                        to_top = True
+                        break
 
-                        continue # not needed but shows intent   
-    elif choice == 2:
+    elif choice == 2:  # PORTFOLIOS
         while True:
+            if to_top:
+                break
+
             fn2.clear_screen()
-            fn2.print_header('Portfolios level 2')            
-            options = ['Trade', 'Performance'] # level 2
-            ''' TODO
-                 .
-                 .
-                 .
-                 .
-            '''
-            print("This side of our menu is not yet implemented. ") 
-            fn2.pause(2)
-            fn2.clear_screen()
-            exit()
+            fn2.print_header('Portfolios level 2')
+            options = ['Trade', 'Performance']
+            fn2.display_menu(options)
+            choice = fn2.get_menu_choice(options)
+
+            if choice is None:
+                print('return to level 1')
+                fn2.pause(1)
+                break
+
+            elif choice == 1:  # Trade
+                while True:
+                    if to_top:
+                        break
+
+                    fn2.clear_screen()
+                    fn2.print_header('Trade level 3')
+                    options = ['Buy', 'Sell']
+                    fn2.display_menu(options)
+                    choice = fn2.get_menu_choice(options)
+
+                    if choice is None:
+                        print('return to level 2')
+                        fn2.pause(1)
+                        break
+
+                    elif choice == 1:  # Buy (LEAF)
+                        fn2.clear_screen()
+                        fn2.print_header('Buy level 4')
+                        print('you have reached Buy')
+                        print('returning to TOP')
+                        fn2.pause(1)
+                        to_top = True
+                        break
+
+                    elif choice == 2:  # Sell (LEAF)
+                        fn2.clear_screen()
+                        fn2.print_header('Sell level 4')
+                        print('you have reached Sell')
+                        print('returning to TOP')
+                        fn2.pause(1)
+                        to_top = True
+                        break
+
+            elif choice == 2:  # Performance
+                while True:
+                    if to_top:
+                        break
+
+                    fn2.clear_screen()
+                    fn2.print_header('Performance level 3')
+                    options = ['Holdings Snapshot', 'P/L Report']
+                    fn2.display_menu(options)
+                    choice = fn2.get_menu_choice(options)
+
+                    if choice is None:
+                        print('return to level 2')
+                        fn2.pause(1)
+                        break
+
+                    elif choice == 1:  # Holdings Snapshot (LEAF)
+                        fn2.clear_screen()
+                        fn2.print_header('Holdings Snapshot level 4')
+                        print('you have reached Holdings Snapshot')
+                        print('returning to TOP')
+                        fn2.pause(1)
+                        to_top = True
+                        break
+
+                    elif choice == 2:  # P/L Report (LEAF)
+                        fn2.clear_screen()
+                        fn2.print_header('P/L Report level 4')
+                        print('you have reached P/L Report')
+                        print('returning to TOP')
+                        fn2.pause(1)
+                        to_top = True
+                        break
+
         
 
 
