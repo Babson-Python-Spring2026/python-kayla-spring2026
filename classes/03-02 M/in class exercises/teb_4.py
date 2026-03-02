@@ -14,3 +14,19 @@ while True:
         print('try again, no text\n')
 
 print(quotient)
+
+#OR 
+
+txt = 'enter an integer'
+while True: 
+    try: 
+        x = int(input(txt))
+        y = int(input(txt))
+        z = x/y 
+        break 
+    except ZeroDivisionError: 
+        txt = "you can't divide by zero: "
+    except ValueError: 
+        txt = 'enter an int!!: '
+
+print('it worked', z)
