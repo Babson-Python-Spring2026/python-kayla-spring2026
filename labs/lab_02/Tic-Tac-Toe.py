@@ -19,6 +19,7 @@ Assume:
 -O is computer
 """
 
+import random
 
 def create_board() -> list[int]:
     """
@@ -27,7 +28,7 @@ def create_board() -> list[int]:
     Returns:
         A list containing the numbers 1 through 9.
     """
-    pass
+    return list(range(1, 10))
 
 
 def display_board(board: list[int]) -> None:
@@ -66,7 +67,7 @@ def check_tie(board: list[int]) -> bool:
         True  → if no open squares remain
         False → otherwise
     """
-    pass
+    return all(v in (10, -10) for v in board)
 
 
 
@@ -84,7 +85,23 @@ def check_winner(board: list[int]) -> str | None:
     Returns:
         'X', 'O', or None
     """
-    pass
+    lines = [
+        # Rows
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        # Columns
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        # Diagonals
+        [0, 4, 8], [2, 4, 6],
+    ]
+
+    for a, b, c in lines:
+        total = board[a] + board[b] + board[c]
+        if total == 30:
+            return 'X'
+        elif total == -30:
+            return 'O'
+
+    return None
 
 
 def game_over(board: list[int], x_moves: bool) -> str | None:
@@ -96,7 +113,12 @@ def game_over(board: list[int], x_moves: bool) -> str | None:
     - If the board is full and no winner, return 'TIE'
     - Otherwise return None
     """
-    pass
+    winner = check_winner(board)
+    if winner:
+        return winner
+    if check_tie(board):
+        return 'TIE'
+    return None
 
 
 def get_human_move(board: list[int]) -> str:
@@ -106,7 +128,7 @@ def get_human_move(board: list[int]) -> str:
     Returns:
         The raw input string entered by the user.
     """
-    pass
+    return input(int("Your move (1-9): "))
 
 
 def get_computer_move(board: list[int]) -> int:
@@ -120,7 +142,38 @@ def get_computer_move(board: list[int]) -> int:
     Returns:
         An integer representing the chosen square number.
     """
-    pass
+    lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6],
+    ]
+
+    def find_winning_move(player_value):
+        for a, b, c in lines:
+            value = [board[a], board[b], board[c]]
+            player_count = value.count(player_value)
+            open_squares = [i for i in (a, b, c) if board[i] not in (10, -10)]
+            if player_count == 2 and len(open_squares) == 1:
+                return open_squares[0]
+        return None
+
+    # 1. Try to win
+    move = find_winning_move(-10)
+    if move is not None:
+        return board[move]  
+
+    # 2. Block human
+    move = find_winning_move(10)
+    if move is not None:
+        return board[move]
+
+    # 3. Prefer center
+    if board[4] not in (10, -10):
+        return 5  
+
+    # 4. Pick a random open square
+    open_squares = [v for v in board if v not in (10, -10)]
+    return random.choice(open_squares)
 
 
 def is_valid_move(board: list[int], move: str) -> tuple[bool, int | None]:
@@ -136,7 +189,19 @@ def is_valid_move(board: list[int], move: str) -> tuple[bool, int | None]:
         (True, index)  → if valid
         (False, None)  → otherwise
     """
-    pass
+    try:
+        square = int(move)
+    except ValueError:
+        return False, None
+
+    if square < 1 or square > 9:
+        return False, None
+
+    index = square - 1
+    if board[index] in (10, -10):
+        return False, None
+
+    return True, index
 
 
 def place_move(board: list[int], index: int, x_moves: bool) -> None:
@@ -148,7 +213,7 @@ def place_move(board: list[int], index: int, x_moves: bool) -> None:
     - If x_moves is False, place -10
     - Modify the board in place
     """
-    pass
+    board[index] = 10 if x_moves else -10
 
 def play_game() -> None:
     """
