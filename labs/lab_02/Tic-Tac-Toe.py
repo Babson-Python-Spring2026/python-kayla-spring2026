@@ -128,7 +128,7 @@ def get_human_move(board: list[int]) -> str:
     Returns:
         The raw input string entered by the user.
     """
-    return input(int("Your move (1-9): "))
+    return input("Your move (1-9): ")
 
 
 def get_computer_move(board: list[int]) -> int:
@@ -170,10 +170,6 @@ def get_computer_move(board: list[int]) -> int:
     # 3. Prefer center
     if board[4] not in (10, -10):
         return 5  
-
-    # 4. Pick a random open square
-    open_squares = [v for v in board if v not in (10, -10)]
-    return random.choice(open_squares)
 
 
 def is_valid_move(board: list[int], move: str) -> tuple[bool, int | None]:
@@ -240,4 +236,40 @@ def play_game() -> None:
     Output:
     - Prints the game progression and final result to the console.
     """
-    pass
+
+    board = create_board()
+    x_moves = True  # X (human) goes first
+
+    while True:
+        display_board(board)
+
+        if x_moves:
+            human = get_human_move(board)
+            valid, index = is_valid_move(board, human)
+            if not valid:
+                print("Invalid move — please enter a number 1-9 for an open square.")
+                input("Press Enter to try again...")
+                continue
+        else:
+            print("Computer is thinking...")
+            square = get_computer_move(board)
+            valid, index = is_valid_move(board, str(square))
+            if not valid:
+                index = next(i for i, v in enumerate(board) if v not in (10, -10))
+
+        place_move(board, index, x_moves)
+
+        result = game_over(board, x_moves)
+        if result:
+            display_board(board)
+            if result == 'TIE':
+                print("It's a tie!")
+            else:
+                print(f"{result} wins!")
+            break
+
+        x_moves = not x_moves
+
+
+if __name__ == "__main__":
+    play_game()
