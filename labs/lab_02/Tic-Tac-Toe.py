@@ -20,6 +20,7 @@ Assume:
 """
 
 import random
+import os
 
 def create_board() -> list[int]:
     """
@@ -241,6 +242,7 @@ def play_game() -> None:
     x_moves = True  # X (human) goes first
 
     while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
         display_board(board)
 
         if x_moves:
@@ -261,6 +263,7 @@ def play_game() -> None:
 
         result = game_over(board, x_moves)
         if result:
+            os.system('cls' if os.name == 'nt' else 'clear')
             display_board(board)
             if result == 'TIE':
                 print("It's a tie!")
