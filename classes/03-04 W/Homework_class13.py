@@ -192,7 +192,7 @@ def has_winner(flat_board: list[str]) -> bool:
 
 
 def who_won(flat_board: list[str]) -> str:
-    ''' determines which player won the game. return 'X', 'O', or 'TIE''''
+    ''' determines which player won the game. return 'X', 'O', or 'TIE'.'''
     winning_lines = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  # rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8],  # cols
