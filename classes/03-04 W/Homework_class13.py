@@ -1,3 +1,36 @@
+'''
+Kayla — 8 / 10
+
+Overall
+
+Solid work with good conceptual coverage.
+
+Strengths
+
+Correct definitions of state and transitions.
+Good explanation of backtracking and undo logic.
+Accurate output explanation.
+
+Weaknesses
+
+Some docstrings could be clearer.
+A few explanations slightly generic.
+
+AI likelihood
+
+Moderate.
+
+Estimated probability: 35–45%
+
+Reason:
+
+Style resembles structured AI answers but still contains minor grammatical imperfections.
+
+GRADE 90
+
+'''
+
+
 """
 Homework: Reading Code with State / Transitions / Invariants (Tic-Tac-Toe)
 
