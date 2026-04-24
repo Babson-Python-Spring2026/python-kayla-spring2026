@@ -1,13 +1,15 @@
 '''
 Kayla,
 
-Your algorithm is well structured. The finalize_run() helper is a strong design choice, 
-and your state variables are explicit and readable.
+You did a good job using AI to clarify the problem before coding, and your questions show that you were 
+thinking about how runs work and how to structure the solution. That’s a strong start.
 
-The main problem is that your output does not exactly match the assignment. You returned extra 
-keys and made longest_run_values a list of tied runs instead of one run. Since the assignment says 
-either tied run may be returned, choose one run rather than returning all of them.
+However, most of the key design ideas—such as how to track the current run, direction, and how to organize 
+the logic—were introduced by the AI and then accepted. To improve, you should take a more active role in 
+proposing the structure of your solution, identifying edge cases on your own, and explaining your reasoning 
+before asking the AI for confirmation.
 
-Grade B+
+The goal is for you to control the design and use AI to refine it, rather than relying on AI to suggest the structure.
 
+Grade B
 '''
