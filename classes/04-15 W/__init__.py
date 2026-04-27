@@ -69,5 +69,5 @@ class PortfolioSystem:
     def get_last_market_date(self):
         return self.mkt_dates[-1]
     
-    my_port = PortfolioSystem([],[])
+    #my_port = PortfolioSystem([],[])
     
