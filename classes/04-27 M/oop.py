@@ -56,3 +56,10 @@ class BankAccount:
 new_account = BankAccount.from_string('bob, 500')
 
 print(new_account.name, new_account.amount)
+
+'''
+EXAM PROBLEM:
+-class: client 
+-attributes 
+-list of positions (each position could be a class)
+'''
